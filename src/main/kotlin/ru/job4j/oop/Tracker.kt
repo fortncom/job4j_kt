@@ -5,19 +5,18 @@ class Tracker {
     private val items: MutableList<Item> = ArrayList()
     private var ids = 1
 
-    fun add(item: Item): Item {
+    internal fun add(item: Item): Item {
         item.id = ids++
         items.add(item)
         return item
     }
 
-    fun findById(id: Int): Item? {
+    internal fun findById(id: Int): Item? {
         val index = indexOf(id)
         return if (index != -1) items[index] else null
     }
 
-    fun findByName(key: String): List<Item> {
-        val quantity = 0
+    internal fun findByName(key: String): List<Item> {
         val rsl: MutableList<Item> = ArrayList()
         for (index in items.indices) {
             val item = items[index]
@@ -28,11 +27,11 @@ class Tracker {
         return rsl
     }
 
-    fun findAll(): List<Item> {
+    internal fun findAll(): List<Item> {
         return items
     }
 
-    fun replace(id: Int, item: Item): Boolean {
+    internal fun replace(id: Int, item: Item): Boolean {
         val index = indexOf(id)
         if (index != -1) {
             item.id = id
@@ -42,7 +41,7 @@ class Tracker {
         return false
     }
 
-    fun delete(id: Int): Boolean {
+    internal fun delete(id: Int): Boolean {
         val index = indexOf(id)
         if (index != -1) {
             items.removeAt(index)
