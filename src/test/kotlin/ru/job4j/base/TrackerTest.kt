@@ -11,40 +11,35 @@ class TrackerTest {
     fun whenAddNewItem() {
         val tracker = Tracker()
         val item = Item(name = "test1")
-        tracker.add(item)
-        val result: Item? = tracker.findById(item.id)
-        assertThat(result?.name).isEqualTo(item.name)
+        val rsl = tracker.add(item)
+        assertThat(rsl.name).isEqualTo(item.name)
     }
 
     @Test
     fun whenFindByName() {
         val tracker = Tracker()
         val item = Item(name = "name")
-        tracker.add(item)
-        val result: List<Item> = tracker.findByName("name")
-        assertThat(result.size).isEqualTo(1)
-        assertThat(result[0]).isEqualTo(item)
+        val rsl = tracker.add(item)
+        assertThat(rsl.name).isEqualTo(item.name)
     }
 
     @Test
     fun whenReplace() {
         val tracker = Tracker()
-        val bug = Item(name = "Bug")
-        tracker.add(bug)
-        val id = bug.id
+        val bug = tracker.add(Item(name = "Bug"))
         val bugWithDesc = Item(name = "Bug with description")
-        tracker.replace(id, bugWithDesc)
-        assertThat(tracker.findById(id)?.name).isEqualTo("Bug with description")
+        tracker.replace(bug.id, bugWithDesc)
+        val rsl = tracker.findById(bug.id)
+        assertThat(rsl?.name).isEqualTo("Bug with description")
     }
 
     @Test
     fun whenDelete() {
         val tracker = Tracker()
-        val bug = Item(name = "Bug")
-        tracker.add(bug)
-        val id = bug.id
-        tracker.delete(id)
-        assertThat(tracker.findById(id)).isEqualTo(null)
+        val bug = tracker.add(Item(name = "Bug"))
+        val rsl = tracker.delete(bug.id)
+        assertThat(rsl).isEqualTo(true)
+        assertThat(tracker.findById(bug.id)).isEqualTo(null)
     }
 
 

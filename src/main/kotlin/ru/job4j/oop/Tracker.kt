@@ -6,8 +6,9 @@ class Tracker {
     private var ids = 1
 
     internal fun add(item: Item): Item {
-        items.add(item.copy(id = ids++))
-        return item
+        val copyItem = item.copy(id = ids++)
+        items.add(copyItem)
+        return copyItem
     }
 
     internal fun findById(id: Int): Item? {
@@ -33,7 +34,7 @@ class Tracker {
     internal fun replace(id: Int, item: Item): Boolean {
         val index = indexOf(id)
         if (index != -1) {
-            items[index] = item.copy(id = 2)
+            items[index] = item.copy(id = id)
             return true
         }
         return false
