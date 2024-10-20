@@ -6,8 +6,7 @@ class Tracker {
     private var ids = 1
 
     internal fun add(item: Item): Item {
-        item.id = ids++
-        items.add(item)
+        items.add(item.copy(id = ids++))
         return item
     }
 
@@ -34,8 +33,7 @@ class Tracker {
     internal fun replace(id: Int, item: Item): Boolean {
         val index = indexOf(id)
         if (index != -1) {
-            item.id = id
-            items[index] = item
+            items[index] = item.copy(id = 2)
             return true
         }
         return false
