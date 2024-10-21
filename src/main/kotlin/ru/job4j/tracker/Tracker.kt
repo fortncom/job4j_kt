@@ -1,4 +1,4 @@
-package ru.job4j.oop
+package ru.job4j.tracker
 
 class Tracker {
 
@@ -28,7 +28,7 @@ class Tracker {
     }
 
     internal fun findAll(): List<Item> {
-        return items
+        return items.toList()
     }
 
     internal fun replace(id: Int, item: Item): Boolean {
