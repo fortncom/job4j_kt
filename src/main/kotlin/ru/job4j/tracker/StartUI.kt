@@ -11,13 +11,15 @@ class StartUI {
                 showMenu()
                 print("Select: ")
                 val select = scanner.nextLine().toInt()
-                if (select in 0..2) {
-                    println("User selected: $select")
-                    if (select == 0) createItem(tracker, scanner)
-                    if (select == 1) showAllItem(tracker)
-                    if (select == 2) run = exit()
-                } else {
+                if (select !in 0..2) {
                     println("Invalid value selected: $select")
+                    continue;
+                }
+                println("User selected: $select")
+                when (select) {
+                    0 -> createItem(tracker, scanner)
+                    1 -> showAllItem(tracker)
+                    2 -> run = exit()
                 }
             }
         }
@@ -26,7 +28,7 @@ class StartUI {
             val menu = arrayOf("Add new Item", "Show all items", "Exit Program")
             println("Menu:")
             for (i in menu.indices) {
-                println(i.toString() + ". " + menu[i])
+                println("$i. ${menu[i]}")
             }
         }
 
