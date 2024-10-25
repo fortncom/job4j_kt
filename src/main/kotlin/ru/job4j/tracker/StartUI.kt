@@ -1,66 +1,51 @@
 package ru.job4j.tracker
 
-import java.util.*
+import ru.job4j.tracker.action.Action
+import ru.job4j.tracker.action.AddAction
+import ru.job4j.tracker.action.ExitAction
+import ru.job4j.tracker.action.ShowAllAction
 
 class StartUI {
 
     companion object {
-        fun init(scanner: Scanner, tracker: Tracker) {
+        fun init(tracker: Tracker, actions: Array<Action>, input: Input) {
             var run = true
             while (run) {
-                showMenu()
-                print("Select: ")
-                val select = scanner.nextLine().toInt()
+                showMenu(actions)
+                val question = "Select: "
+                val select = input.ask(question).toInt()
                 if (select !in 0..2) {
                     println("Invalid value selected: $select")
                     continue;
                 }
                 println("User selected: $select")
-                when (select) {
-                    0 -> createItem(tracker, scanner)
-                    1 -> showAllItem(tracker)
-                    2 -> run = exit()
-                }
+                val action = actions.get(select)
+                run = action.execute(tracker, input)
             }
         }
 
-        private fun showMenu() {
-            val menu = arrayOf("Add new Item", "Show all items", "Exit Program")
+        private fun showMenu(actions: Array<Action>) {
             println("Menu:")
-            for (i in menu.indices) {
-                println("$i. ${menu[i]}")
+            for (i in actions.indices) {
+                println("$i. ${actions[i].name()}")
             }
         }
-
-        private fun createItem(tracker: Tracker, scanner: Scanner) {
-            println("=== Create a new Item ====")
-            print("Enter name: ")
-            val name: String = scanner.nextLine()
-            val item = Item(name = name)
-            tracker.add(item)
-            println("Item created: $item")
-        }
-
-        private fun showAllItem(tracker: Tracker) {
-            println("=== Show all items ====")
-            val items: List<Item> = tracker.findAll()
-            if (items.size > 0) {
-                for (item in items) {
-                    println(item)
-                }
-            } else {
-                println("Store is empty")
-            }
-        }
-
-        private fun exit() = false
     }
 }
 
 
 
 fun main(args: Array<String>) {
-    val scanner = Scanner(System.`in`)
     val tracker = Tracker()
-    StartUI.init(scanner, tracker)
+    val consoleInput = ConsoleInput()
+    val actions = arrayOf(AddAction(), ShowAllAction(), ExitAction())
+    StartUI.init(tracker, actions, consoleInput)
 }
+
+
+
+
+
+
+
+
