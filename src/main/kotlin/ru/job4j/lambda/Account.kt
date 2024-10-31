@@ -1,3 +1,5 @@
 package ru.job4j.lambda
 
-data class Account (var name: String = "", var balance: Long = 0)
+data class Account (var name: String = "",
+                    var balance: Long = 0,
+                    var requisite: String = "")
