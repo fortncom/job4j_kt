@@ -26,8 +26,8 @@ class StartUI {
 
         private fun showMenu(actions: Array<Action>) {
             println("Menu:")
-            for (i in actions.indices) {
-                println("$i. ${actions[i].name()}")
+            for ((index, value) in actions.withIndex()) {
+                println("$index. ${value.name()}")
             }
         }
     }
