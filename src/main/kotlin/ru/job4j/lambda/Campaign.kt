@@ -5,8 +5,7 @@ import java.util.*
 data class Campaign(
     var name: String = "",
     var address: Address? = null,
-    var created: Date = Date()) {
+    var created: Date = Date())
 
-    fun printCompaigns(compaigns: List<Campaign>) = compaigns.map { it.toString() }.toList()
-}
+fun printCompaigns(compaigns: List<Campaign>) = compaigns.map { it.toString() }.toList()
 

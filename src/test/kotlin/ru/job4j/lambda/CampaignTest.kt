@@ -31,7 +31,7 @@ class CampaignTest {
         )
 
         val expected = campaigns.map { it.toString() }.toList()
-        val rsl = Campaign().printCompaigns(campaigns)
+        val rsl = printCompaigns(campaigns)
 
         assertThat(rsl).isEqualTo(expected)
     }
