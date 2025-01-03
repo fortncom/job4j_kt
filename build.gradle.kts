@@ -37,3 +37,10 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt> {
         txt.required.set(false) // Текстовый отчет
     }
 }
+
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
