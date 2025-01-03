@@ -1,7 +1,9 @@
 package ru.job4j.base
 
+const val SIZE = 10
+
 fun createArray() {
-    val names = arrayOfNulls<String>(10)
+    val names = arrayOfNulls<String>(SIZE)
     names[0] = "Petr Arsentev"
     for ((index, name) in names.withIndex()) {
         println("$index " + name?.length)

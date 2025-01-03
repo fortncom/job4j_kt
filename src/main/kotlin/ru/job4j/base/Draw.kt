@@ -9,6 +9,8 @@ fun draw(size: Int) {
     }
 }
 
+const val SIDE_LENGTH = 7
+
 fun main() {
-    draw(7)
+    draw(SIDE_LENGTH)
 }

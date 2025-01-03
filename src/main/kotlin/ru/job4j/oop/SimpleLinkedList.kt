@@ -20,10 +20,10 @@ class SimpleLinkedList<T : Any> : Iterable<T> {
 
     fun get(index: Int): T {
         if (index < 0 || index >= size) {
-            throw IndexOutOfBoundsException()
+            throw IndexOutOfBoundsException("Index: $index, Size: $size")
         }
         var currentNode: Node<T>? = head
-        for (i in 0 until index) {
+        repeat(index) {
             currentNode = currentNode?.next
         }
         return currentNode!!.value
@@ -31,12 +31,12 @@ class SimpleLinkedList<T : Any> : Iterable<T> {
 
     fun remove (index: Int): T {
         if (index < 0 || index >= size) {
-            throw IndexOutOfBoundsException()
+            throw IndexOutOfBoundsException("Index: $index, Size: $size")
         }
         var rsl: T
         var currentNode: Node<T>? = head
         if (index != 0) {
-            for (i in 0 until index - 1) {
+            repeat(index - 1) {
                 currentNode = currentNode?.next
             }
             val prev: Node<T>? = currentNode

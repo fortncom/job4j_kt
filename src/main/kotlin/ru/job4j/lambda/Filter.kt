@@ -4,7 +4,12 @@ import java.util.*
 import java.util.function.Function
 import java.util.stream.Collectors
 
-val list = listOf(1, 2, 3, 4)
+const val NUM_1 = 1
+const val NUM_2 = 2
+const val NUM_3 = 3
+const val NUM_4 = 4
+
+val list = listOf(NUM_1, NUM_2, NUM_3, NUM_4)
 val filtered = list.filter { it % 2 == 0 }
 
 fun count(list: ArrayList<Int>): Int? {
@@ -25,10 +30,15 @@ fun findSingleNumbers(array: Array<Int>): Array<Int> {
         .collect(Collectors.toList()).toTypedArray()
 }
 
+const val NUMBER_1 = 1
+const val NUMBER_2 = 2
+const val NUMBER_3 = 3
+const val NUMBER_4 = 4
+
 fun main() {
     println(filtered)
     println(count(ArrayList(list)))
-    findSingleNumbers(arrayOf(1, 2, 2, 3))
+    findSingleNumbers(arrayOf(NUMBER_1, NUMBER_2, NUMBER_3, NUMBER_4))
         .forEach {
             print("$it ") // 1 3
         }

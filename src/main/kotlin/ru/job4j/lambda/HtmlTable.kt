@@ -20,6 +20,9 @@ class HtmlTable {
     }
 }
 
+const val ROW = 3
+const val CELL = 5
+
 fun main() {
-    println(HtmlTable().table(3, 5))
+    println(HtmlTable().table(ROW, CELL))
 }
