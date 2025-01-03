@@ -1,7 +1,7 @@
 plugins {
-    kotlin("jvm") version "1.8.0"
+    kotlin("jvm") version "2.0.0"
     checkstyle
-    id("io.gitlab.arturbosch.detekt") version "1.23.0"
+    id("io.gitlab.arturbosch.detekt") version "1.23.7"
 }
 checkstyle {
     configFile = rootProject.file("checkstyle.xml")
@@ -24,7 +24,7 @@ tasks.test {
 }
 
 detekt {
-    toolVersion = "1.23.0" // Версия Detekt
+    toolVersion = "1.23.7" // Версия Detekt
     config = files("$projectDir/config/detekt/detekt.yml") // Путь к конфигурационному файлу
     buildUponDefaultConfig = true // Настройки будут расширять дефолтный конфиг Detekt
     allRules = false // Использовать только правила, указанные в конфиге
@@ -43,4 +43,9 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
         jvmTarget = "17"
     }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }
